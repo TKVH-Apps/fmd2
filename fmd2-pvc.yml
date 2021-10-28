@@ -18,7 +18,7 @@ apiVersion: v1
 metadata:
   name: fmd2-modules
   annotations:
-    nfs.io/storage-path: "data02/fmd2/modules"
+    nfs.io/storage-path: "data01/fmd2/modules"
 spec:
   storageClassName: managed-nfs-storage
   accessModes:
@@ -32,7 +32,7 @@ apiVersion: v1
 metadata:
   name: fmd2-data
   annotations:
-    nfs.io/storage-path: "data02/fmd2/data"
+    nfs.io/storage-path: "data01/fmd2/data"
 spec:
   storageClassName: managed-nfs-storage
   accessModes:
