@@ -44,6 +44,20 @@ spec:
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
+  name: fmd2-wine
+  annotations:
+    nfs.io/storage-path: "data01/fmd2/wine"
+spec:
+  storageClassName: managed-nfs-storage
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 5Gi
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
   name: downloads
   annotations:
     nfs.io/storage-path: "data02/downloads/mangas"

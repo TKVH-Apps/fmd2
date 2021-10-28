@@ -46,8 +46,11 @@ spec:
           mountPath: /app/FMD2/lua
         - name: fmd2-data
           mountPath: /app/FMD2/data
+        - name: fmd2-wine
+          mountPath: /config/.wine
         - name: downloads
           mountPath: /downloads
+
         resources:
           limits:
             memory: 256Mi
@@ -73,6 +76,9 @@ spec:
       - name: fmd2-data
         persistentVolumeClaim:
           claimName: fmd2-data
+      - name: fmd2-wine
+        persistentVolumeClaim:
+          claimName: fmd2-wine
       - name: downloads
         persistentVolumeClaim:
           claimName: downloads
