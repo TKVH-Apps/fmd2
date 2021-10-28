@@ -16,6 +16,8 @@ spec:
     matchLabels:
       app: fmd2
       part-of: fmd2
+  strategy:
+    type: Recreate
   template:
     metadata:
       labels:
@@ -48,7 +50,7 @@ spec:
           mountPath: /downloads
         resources:
           limits:
-            memory: 128Mi
+            memory: 256Mi
           requests:
             memory: 64Mi
         readinessProbe:
