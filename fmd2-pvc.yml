@@ -1,0 +1,56 @@
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: fmd2-userdata
+  annotations:
+    nfs.io/storage-path: "data01/fmd2/userdata"
+spec:
+  storageClassName: managed-nfs-storage
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 5Gi
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: fmd2-modules
+  annotations:
+    nfs.io/storage-path: "data02/fmd2/modules"
+spec:
+  storageClassName: managed-nfs-storage
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 5Gi
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: fmd2-data
+  annotations:
+    nfs.io/storage-path: "data02/fmd2/data"
+spec:
+  storageClassName: managed-nfs-storage
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 5Gi
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: downloads
+  annotations:
+    nfs.io/storage-path: "data02/downloads/mangas"
+spec:
+  storageClassName: managed-nfs-storage
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 5Gi

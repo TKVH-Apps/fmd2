@@ -1,0 +1,76 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: fmd2
+  labels:
+    app: fmd2
+    part-of: fmd2
+  annotations:
+    keel.sh/policy: force
+    keel.sh/trigger: poll
+    keel.sh/pollSchedule: "@hourly"
+    keel.sh/match-tag: true
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fmd2
+      part-of: fmd2
+  template:
+    metadata:
+      labels:
+        app: fmd2
+        part-of: fmd2
+    spec:
+      containers:
+      - name: fmd2
+        image: banhcanh/docker-fmd2:unstable
+        ports:
+        - name: fmd2
+          containerPort: 6080
+        env:
+        - name: PUID
+          value: "1000"
+        - name: PGID
+          value: "1000"
+        - name: TZ
+          value: "Europe/Paris"
+        - name: UMASK
+          value: "022"
+        volumeMounts:
+        - name: fmd2-userdata
+          mountPath: /app/FMD2/userdata
+        - name: fmd2-modules
+          mountPath: /app/FMD2/lua
+        - name: fmd2-data
+          mountPath: /app/FMD2/data
+        - name: downloads
+          mountPath: /downloads
+        resources:
+          limits:
+            memory: 128Mi
+          requests:
+            memory: 64Mi
+        readinessProbe:
+          tcpSocket:
+            port: fmd2
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        livenessProbe:
+          tcpSocket:
+            port: fmd2
+          initialDelaySeconds: 15
+          periodSeconds: 20
+      volumes:
+      - name: fmd2-userdata
+        persistentVolumeClaim:
+          claimName: fmd2-userdata
+      - name: fmd2-modules
+        persistentVolumeClaim:
+          claimName: fmd2-modules
+      - name: fmd2-data
+        persistentVolumeClaim:
+          claimName: fmd2-data
+      - name: downloads
+        persistentVolumeClaim:
+          claimName: downloads
