@@ -30,6 +30,7 @@ spec:
       containers:
       - name: fmd2
         image: banhcanh/docker-fmd2:unstable
+        imagePullPolicy: Always
         ports:
         - name: fmd2
           containerPort: 6080
