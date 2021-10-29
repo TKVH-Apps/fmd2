@@ -24,9 +24,9 @@ spec:
         app: fmd2
         part-of: fmd2
     spec:
-      securityContext:
-        runAsUser: 1000
-        runAsGroup: 1000
+#      securityContext:
+#        runAsUser: 1000
+#        runAsGroup: 1000
       containers:
       - name: fmd2
         image: banhcanh/docker-fmd2:unstable
