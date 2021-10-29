@@ -50,10 +50,9 @@ spec:
           mountPath: /config/.wine
         - name: downloads
           mountPath: /downloads
-
         resources:
           limits:
-            memory: 256Mi
+            memory: 512Mi
           requests:
             memory: 64Mi
         readinessProbe:
