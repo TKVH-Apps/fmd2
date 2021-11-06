@@ -1,0 +1,6 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: fmd2
+  annotations:
+    linkerd.io/inject: enabled

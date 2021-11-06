@@ -6,3 +6,4 @@ resources:
   - fmd2-svc.yml
   - fmd2-pvc.yml
   - fmd2-ing.yml
+  - fmd2-ns.yml
