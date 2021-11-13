@@ -24,9 +24,14 @@ spec:
         app: fmd2
         part-of: fmd2
     spec:
-#      securityContext:
-#        runAsUser: 1000
-#        runAsGroup: 1000
+      affinity:
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 1
+            preference:
+              matchExpressions:
+              - key: node-role.kubernetes.io/worker
+                operator: Exists
       containers:
       - name: fmd2
         image: banhcanh/docker-fmd2:unstable
