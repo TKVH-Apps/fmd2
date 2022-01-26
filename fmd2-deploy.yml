@@ -5,11 +5,6 @@ metadata:
   labels:
     app: fmd2
     part-of: fmd2
-  annotations:
-    keel.sh/policy: force
-    keel.sh/trigger: poll
-    keel.sh/pollSchedule: "@hourly"
-    keel.sh/match-tag: true
 spec:
   replicas: 1
   selector:
